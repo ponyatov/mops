@@ -22,6 +22,9 @@
             "dependencies": {
                 "vibe-d": {"version":"~>0.9", "optional": true}
             },
+            "subConfigurations": {
+                "vibe-d:tls": "notls"
+            },
             "versions": [
                 "WebInterface"
             ]
