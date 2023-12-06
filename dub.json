@@ -13,6 +13,7 @@
     "subConfigurations": {
         "bindbc-sdl": "static"
     },
+    "libs": ["SDL2"],
     "configurations": [
         {
             "name": "mini"

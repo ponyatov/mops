@@ -8,7 +8,7 @@ JQUERY_THEME     = dark-hive
 JQUERY_THEME_VER = 1.12.1
 
 CONFIG = mini
-CONFIG = webface
+# CONFIG = webface
 
 # dir
 GZ = $(HOME)/gz
@@ -25,7 +25,11 @@ T += $(wildcard views/*.dt)
 .PHONY: all run
 all: bin/$(MODULE)
 run: $(D) $(J) $(T) Makefile
-	dub run -c $(CONFIG)
+	DISPLAY=:1 dub run -c $(CONFIG)
+
+.PHONY: X
+X:
+	Xephyr -br -ac -noreset -screen 240x320 :1
 
 # rule
 bin/$(MODULE): $(D) $(J) $(T) Makefile
