@@ -10,5 +10,6 @@ html(lang='ru')
         img(src="/logo.png",id='logo')
         block body
         a(class="ui-button ui-icon-home",href="/") home
+            img(class="ui-icon-home")
         a(class="ui-button ui-icon-help",href="/about") about
     script(src="/js.js")

@@ -16,15 +16,16 @@ CURL = curl -L -o
 # src
 D += $(wildcard src/*.d)
 J += $(wildcard *.json)
+T += $(wildcard views/*.dt)
 
 # all
 .PHONY: all run
 all: bin/$(MODULE)
-run: $(D) $(J)
+run: $(D) $(J) $(T)
 	dub run
 
 # rule
-bin/$(MODULE): $(D) $(J)
+bin/$(MODULE): $(D) $(J) $(T)
 	dub build
 
 # format

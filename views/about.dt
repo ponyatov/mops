@@ -1,0 +1,6 @@
+extends layout
+
+block body
+    h1 mops
+    h2 Multihead Overlapping Projection System
+    p
