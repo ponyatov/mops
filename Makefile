@@ -1,6 +1,12 @@
 # var
 MODULE = $(notdir $(CURDIR))
 
+# version
+JQUERY_VER       = 3.7.1
+JQUERY_UI        = 1.13.2
+JQUERY_THEME     = dark-hive
+JQUERY_THEME_VER = 1.12.1
+
 # tool
 CURL = curl -L -o
 
@@ -32,4 +38,12 @@ update:
 	sudo apt update
 	sudo apt install -uy `cat apt.txt`
 
-gz:
+gz: static/cdn/jquery.js static/cdn/jquery-ui.js \
+	static/cdn/$(JQUERY_THEME).css
+
+static/cdn/jquery.js:
+	$(CURL) $@ https://code.jquery.com/jquery-$(JQUERY_VER).min.js
+static/cdn/jquery-ui.js:
+	$(CURL) $@ https://code.jquery.com/ui/$(JQUERY_UI)/jquery-ui.min.js
+static/cdn/$(JQUERY_THEME).css:
+	$(CURL) $@ https://code.jquery.com/ui/$(JQUERY_UI)/themes/$(JQUERY_THEME)/jquery-ui.css
