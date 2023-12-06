@@ -22,7 +22,7 @@ void error(HTTPServerRequest req, HTTPServerResponse res,
 void backend() {
     // 
     router.get("/", staticTemplate!"index.dt");
-    router.get("/about", staticTemplate!"about.dt");
+    router.get("/about/", staticTemplate!"about.dt");
     // 
     router.get("/favicon.ico", serveStaticFile("static/logo.png"));
     router.get("*", serveStaticFiles("static/"));
