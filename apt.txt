@@ -1,4 +1,4 @@
 git make curl
 code meld doxygen clang-format
-g++
+g++ dmd
 libsdl2-dev

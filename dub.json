@@ -8,6 +8,9 @@
     "targetPath":    "bin",
     "targetType":    "executable",
     "dependencies": {
-
+        "bindbc-sdl": "~>0.21.4"
+    },
+    "subConfigurations": {
+        "bindbc-sdl": "static"
     }
 }
