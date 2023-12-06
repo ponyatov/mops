@@ -18,7 +18,7 @@
             "name": "mini"
         },
         {
-            "name": "webiface",
+            "name": "webface",
             "dependencies": {
                 "vibe-d": {"version":"~>0.9", "optional": true}
             },

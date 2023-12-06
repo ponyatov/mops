@@ -7,6 +7,9 @@ JQUERY_UI        = 1.13.2
 JQUERY_THEME     = dark-hive
 JQUERY_THEME_VER = 1.12.1
 
+CONFIG = mini
+CONFIG = webface
+
 # dir
 GZ = $(HOME)/gz
 
@@ -21,12 +24,12 @@ T += $(wildcard views/*.dt)
 # all
 .PHONY: all run
 all: bin/$(MODULE)
-run: $(D) $(J) $(T)
-	dub run
+run: $(D) $(J) $(T) Makefile
+	dub run -c $(CONFIG)
 
 # rule
-bin/$(MODULE): $(D) $(J) $(T)
-	dub build
+bin/$(MODULE): $(D) $(J) $(T) Makefile
+	dub build -c $(CONFIG)
 
 # format
 .PHONY: format
