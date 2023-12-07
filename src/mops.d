@@ -5,7 +5,7 @@ import video;
 
 void main(string[] args) {
     writeln(args);
-    video.blaster;
+    video.loop;
     version (WebInterface) {
         web.backend;
     }
