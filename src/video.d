@@ -29,9 +29,7 @@ void init() {
 }
 
 void mouse() {
-    const ubyte data = 0;
-    const ubyte mask = 0;
-    SDL_SetCursor(SDL_CreateCursor(&data, &mask, 1, 1, 0, 0));
+    SDL_ShowCursor(SDL_DISABLE);
 }
 
 void winrender() {
