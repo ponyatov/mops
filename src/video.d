@@ -125,7 +125,7 @@ void loop() {
     init;
     bool quit = false;
     while (!quit) {
-        SDL_Delay(22);
+        SDL_Delay(5);
         draw;
         SDL_PumpEvents;
         while (SDL_PollEvent(&event)) {
