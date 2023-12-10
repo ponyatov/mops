@@ -12,11 +12,14 @@ import bindbc.sdl.ttf;
 
 SDL_Window* window = null;
 SDL_Renderer* renderer = null;
-SDL_Surface* logo = null;
-SDL_Texture* logo_t = null;
-SDL_Rect logo_rect;
 SDL_DisplayMode display_mode;
 int W = 0, H = 0;
+
+version (HasLogo) {
+    SDL_Surface* logo = null;
+    SDL_Texture* logo_t = null;
+    SDL_Rect logo_rect;
+}
 
 SDL_Event event;
 
@@ -61,7 +64,8 @@ void init() {
     mouse;
     winrender;
     image;
-    mklogo;
+    version (HasLogo)
+        mklogo;
     ldfont;
 }
 
@@ -81,32 +85,38 @@ void image() {
     assert(IMG_Init(IMG_INIT_PNG) == IMG_INIT_PNG);
 }
 
-void mklogo() {
-    logo = IMG_Load("static/logo.png");
-    assert(logo !is null);
-    // 
-    logo_t = SDL_CreateTextureFromSurface(renderer, logo);
-    assert(logo_t !is null);
-    // 
+version (HasLogo) {
+    void mklogo() {
+        logo = IMG_Load("static/logo.png");
+        assert(logo !is null);
+        // 
+        logo_t = SDL_CreateTextureFromSurface(renderer, logo);
+        assert(logo_t !is null);
+        // 
+    }
 }
 
-int logo_x = 12, logo_y = 34, logo_dx = 2, logo_dy = 3;
+version (HasLogo) {
+    int logo_x = 12, logo_y = 34, logo_dx = 2, logo_dy = 3;
 
-void mvlogo() {
-    logo_x += logo_dx;
-    if (logo_x + logo_rect.w > W || logo_x < 0)
-        logo_dx = -logo_dx;
-    logo_y += logo_dy;
-    if (logo_y + logo_rect.h > H || logo_y < 0)
-        logo_dy = -logo_dy;
-    logo_rect = SDL_Rect(logo_x, logo_y, logo.w, logo.h);
-    SDL_RenderCopy(renderer, logo_t, null, &logo_rect);
+    void mvlogo() {
+        logo_x += logo_dx;
+        if (logo_x + logo_rect.w > W || logo_x < 0)
+            logo_dx = -logo_dx;
+        logo_y += logo_dy;
+        if (logo_y + logo_rect.h > H || logo_y < 0)
+            logo_dy = -logo_dy;
+        logo_rect = SDL_Rect(logo_x, logo_y, logo.w, logo.h);
+        SDL_RenderCopy(renderer, logo_t, null, &logo_rect);
+    }
 }
 
 void fini() {
     TTF_Quit;
-    SDL_FreeSurface(logo);
-    SDL_DestroyTexture(logo_t);
+    version (HasLogo) {
+        SDL_FreeSurface(logo);
+        SDL_DestroyTexture(logo_t);
+    }
     IMG_Quit();
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
@@ -116,7 +126,8 @@ void fini() {
 void draw() {
     SDL_SetRenderDrawColor(renderer, 0x11, 0x11, 0x11, 0x00);
     SDL_RenderClear(renderer);
-    mvlogo;
+    version (HasLogo)
+        mvlogo;
     drawtime;
     SDL_RenderPresent(renderer);
 }
