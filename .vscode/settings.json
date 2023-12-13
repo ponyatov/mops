@@ -7,13 +7,8 @@
         { "command": "multiCommand.f12",
             "sequence": [ "workbench.action.files.saveAll",
                 { "command": "workbench.action.terminal.sendSequence",
-                    "args": {"text": "\u000D clear ; LANG=C make run \u000D"}}]}
+                    "args": {"text": "\u000D clear ; LANG=C make grid \u000D"}}]}
     ],
-
-    // files
-    "files.associations": {
-        "*.S": "gas",
-    },
 
     // editor
     "editor.tabSize": 4,
@@ -35,7 +30,7 @@
     // clang-format
     "clang-format.executable":     "clang-format",
     "clang-format.fallbackStyle":  "Google",
-    "clang-format.style": "file",
+    "clang-format.style":          "file",
 
     // D
     "d.dubPath": "/usr/bin/dub",

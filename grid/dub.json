@@ -1,0 +1,17 @@
+{
+    "name":          "mops:grid",
+    "description":   "3-heads grid generator",
+    "homepage":      "https://github.com/ponyatov/mops/tree/shadow/grid",
+    "authors":      ["Dmitry Ponyatov <dponyatov@gmail.com>"],
+    "copyright":     "Copyright © 2023, Dmitry Ponyatov <dponyatov@gmail.com>",
+    "license":       "MIT",
+    "targetPath":    "../bin",
+    "targetName":    "grid",
+    "targetType":    "executable",
+    "dependencies": {
+        "bindbc-sdl": "~>0.21.4"
+    },
+    "libs":      ["SDL2", "SDL2_image", "SDL2_ttf", "SDL2_mixer"  ],
+    "versions":  ["BindSDL_Image", "BindSDL_TTF", "BindSDL_Mixer" ],
+    "subConfigurations": { "bindbc-sdl": "static" }
+}

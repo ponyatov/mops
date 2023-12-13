@@ -1,12 +1,13 @@
 {
-	"name":          "mops",
-	"description":   "A minimal D application.",
+    "name":          "mops",
+    "description":   "A minimal D application.",
     "homepage":      "https://github.com/ponyatov/mops",
-	"authors":      ["Dmitry Ponyatov <dponyatov@gmail.com>"],
-	"copyright":     "Copyright © 2023, Dmitry Ponyatov <dponyatov@gmail.com>",
-	"license":       "MIT",
+    "authors":      ["Dmitry Ponyatov <dponyatov@gmail.com>"],
+    "copyright":     "Copyright © 2023, Dmitry Ponyatov <dponyatov@gmail.com>",
+    "license":       "MIT",
     "targetPath":    "bin",
     "targetType":    "executable",
+    "subPackages":  ["grid"],
     "dependencies": {
         "bindbc-sdl": "~>0.21.4"
     },
