@@ -11,8 +11,8 @@
     "dependencies": {
         "bindbc-sdl": "~>0.21.4"
     },
-    "libs":      ["SDL2", "SDL2_image", "SDL2_ttf", "SDL2_mixer"  ],
-    "versions":  ["BindSDL_Image", "BindSDL_TTF", "BindSDL_Mixer" ],
+    "libs":              ["SDL2", "SDL2_image", "SDL2_ttf", "SDL2_mixer"  ],
+    "versions":          ["BindSDL_Image", "BindSDL_TTF", "BindSDL_Mixer" ],
     "subConfigurations": { "bindbc-sdl": "static" },
     "configurations": [
         {
