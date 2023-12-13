@@ -45,7 +45,7 @@ run: $(D) $(J) $(T)
 
 .PHONY: grid
 grid: $(D) $(J) $(T) Makefile
-	dub run :grid
+	DISPLAY=:1 dub run :$@
 
 .PHONY: X
 X:
@@ -55,7 +55,7 @@ X:
 .PHONY: format
 format: tmp/format_d
 tmp/format_d: $(D)
-	$(RUN) dfmt -- -i $? && touch $@
+	dub run dfmt -- -i $? && touch $@
 
 # rule
 bin/$(MODULE): $(D) $(J) $(T) Makefile

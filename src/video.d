@@ -69,7 +69,7 @@ void init() {
     ldfont;
 }
 
-void mouse() {
+void nomouse() {
     SDL_ShowCursor(SDL_DISABLE);
 }
 
