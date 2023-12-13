@@ -22,6 +22,7 @@ class Window {
         b = blue;
         assert(SDL_CreateWindowAndRenderer(w, h,
                 SDL_WINDOW_SHOWN | SDL_WINDOW_BORDERLESS, &window, &renderer) == 0);
+        SDL_SetWindowPosition(window, x, y);
         SDL_SetRenderDrawColor(renderer, r, g, b, 0x00);
         draw;
     }
