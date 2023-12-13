@@ -10,6 +10,7 @@ class Window {
     string title;
     int w, h, x, y;
     ubyte r, g, b;
+    ubyte step = 50;
     this(string title, int width, int height, int xpos,
             int ypos, ubyte red, ubyte green, ubyte blue) {
         this.title = title;
@@ -23,12 +24,35 @@ class Window {
         assert(SDL_CreateWindowAndRenderer(w, h,
                 SDL_WINDOW_SHOWN | SDL_WINDOW_BORDERLESS, &window, &renderer) == 0);
         SDL_SetWindowPosition(window, x, y);
-        SDL_SetRenderDrawColor(renderer, r, g, b, 0x00);
+        // 
         draw;
     }
 
+    void drawcolor() {
+        SDL_SetRenderDrawColor(renderer, cast(ubyte)(r * 5),
+                cast(ubyte)(g * 5), cast(ubyte)(b * 8), 0x00);
+    }
+
+    void hlines() {
+        foreach (y; 0 .. h / step+1) {
+            SDL_RenderDrawLine(renderer, 0, y * step, w, y * step);
+        }
+        SDL_RenderDrawLine(renderer, 0, h, w, h);
+    }
+
+    void vlines() {
+        foreach (x; 0 .. w / step+1) {
+            SDL_RenderDrawLine(renderer, x * step, 0, x * step, h);
+        }
+        SDL_RenderDrawLine(renderer, w, 0, w, h);
+    }
+
     void draw() {
+        SDL_SetRenderDrawColor(renderer, r, g, b, 0x00);
         SDL_RenderClear(renderer);
+        drawcolor;
+        hlines;
+        vlines;
         SDL_RenderPresent(renderer);
     }
 
