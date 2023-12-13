@@ -1,0 +1,34 @@
+{
+    "name":          "mops",
+    "description":   "A minimal D application.",
+    "homepage":      "https://github.com/ponyatov/mops",
+    "authors":      ["Dmitry Ponyatov <dponyatov@gmail.com>"],
+    "copyright":     "Copyright © 2023, Dmitry Ponyatov <dponyatov@gmail.com>",
+    "license":       "MIT",
+    "targetPath":    "bin",
+    "targetType":    "executable",
+    "subPackages":  ["grid"],
+    "dependencies": {
+        "bindbc-sdl": "~>0.21.4"
+    },
+    "libs":              ["SDL2", "SDL2_image", "SDL2_ttf", "SDL2_mixer"  ],
+    "versions":          ["BindSDL_Image", "BindSDL_TTF", "BindSDL_Mixer" ],
+    "subConfigurations": { "bindbc-sdl": "static" },
+    "configurations": [
+        {
+            "name": "mini"
+        },
+        {
+            "name": "webface",
+            "dependencies": {
+                "vibe-d": {"version":"~>0.9", "optional": true}
+            },
+            "subConfigurations": {
+                "vibe-d:tls": "notls"
+            },
+            "versions": [
+                "WebInterface", "HasLogo"
+            ]
+        }
+    ]
+}
